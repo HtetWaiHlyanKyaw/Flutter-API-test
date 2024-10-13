@@ -65,8 +65,9 @@ class _HomescreenPageState extends State<HomescreenPage> {
           itemCount: users.length,
           itemBuilder: (context, index) {
             final user = users[index];
-            final first_name = user.firstName;
+            final firstName = user.firstName;
             final email = user.email;
+            final dob = user.dob;
             // final imageUrl = user['picture']['medium'];
             // final image = Image.network(imageUrl);
             return Padding(
@@ -78,22 +79,33 @@ class _HomescreenPageState extends State<HomescreenPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: ListTile(
-                    // leading: ClipRRect(
-                    //   child: image,
-                    //   borderRadius: BorderRadius.circular(100),
-                    // ),
-                    title: Text(
-                      first_name,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(
-                      email,
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
-                  ),
+                      // leading: ClipRRect(
+                      //   child: image,
+                      //   borderRadius: BorderRadius.circular(100),
+                      // ),
+                      title: Text(
+                        firstName,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Wrap(
+                        children: [
+                          Text(
+                            email,
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
+                          Text(
+                            dob.age.toString(),
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
+                          Text(
+                            "Date of Birth: " + dob.date.toString(),
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
+                        ],
+                      )),
                 ),
               ),
             );
